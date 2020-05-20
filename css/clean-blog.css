@@ -49,6 +49,12 @@ blockquote {
   margin-top: 60px;
 }
 
+.sub {
+  font-size: 28px;
+  font-weight: 200;
+  margin-top: 60px;
+}
+
 .caption {
   font-size: 14px;
   font-style: italic;

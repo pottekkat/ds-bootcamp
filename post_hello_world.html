@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>Get started with Data Science and Machine Learning</title>
+
+  <!-- Bootstrap core CSS -->
+  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Custom fonts for this template -->
+  <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+  <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet'
+    type='text/css'>
+  <link
+    href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800'
+    rel='stylesheet' type='text/css'>
+
+  <!-- Custom styles for this template -->
+  <link href="css/clean-blog.min.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">Data Science Bootcamp</a>
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+        data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
+        aria-label="Toggle navigation">
+        Menu
+        <i class="fas fa-bars"></i>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="index.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="about.html">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="post.html">Contribute</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="contact.html">Join Slack Channel</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Page Header -->
+  <header class="masthead" style="background-image: url('img/post-bg.jpg')">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="post-heading">
+            <h1>Hello World! for Machine Learning</h1>
+            <h2 class="subheading">Create your first Machine Learning model with a few lines of code</h2>
+            <span class="meta">Posted by
+              <a href="#">Navendu Pottekkat</a>
+              on May 15, 2020</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Post Content -->
+  <article>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <p>The most common question that keeps on popping is "How do I get started with Machine Learning?". I know it
+            can be quite overwhelming with all the different tools and resources available online and you have no idea
+            where to start. Believe me I have been there. So in this article, I will try to get you started with
+            building Machine Learning models and familiarise you with the practices that is being used in the industry.
+          </p>
+
+          <p>I hope you know a little python which we will be using to code our model. If not here is a great place for
+            you to start : <a target="_new"
+              href="https://www.w3schools.com/python/">https://www.w3schools.com/python/</a></p>
+
+          <h2 class="section-heading">What is Machine Learning?</h2>
+
+          <p>Machine Learning provides systems the ability to automatically learn and improve from without being
+            explicitly programmed.</p>
+
+          <blockquote class="blockquote">"Geez! that seems complicated..."</blockquote>
+
+          <p>To put it simply, Machine Learning is just pattern recognition. That's it!</p>
+
+          <img class="img-fluid" src="img/hello_world/01.png" alt="">
+          <span class="caption text-muted">What we want is a machine that can learn from experience – Alan Turing,
+            1947</span>
+
+          <div class="container">
+            <div class="row">
+              <div class="col-sm">
+                <img class="img-fluid" src="img/hello_world/02.jpg" alt="">
+                <span class="caption text-muted">Learning by experience</span>
+              </div>
+              <div class="col-sm">
+                <p>Consider a baby playing with a toy. He has to put the blocks in the correct slots or it won't fit. He
+                  tries to stick the square block to the circular hole. It doesn't work! He tries it a few more times
+                  and eventually fits the square block in the square hole. Now, every time he sees a square block, he
+                  would know to fit it into the square hole!
+                </p>
+                <p>
+                  This is a very simple idea of how Machine Learning works. Machine Learning is obviously more
+                  complicated but let us start simple.
+
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <p>In Machine Learning, instead of trying to define the rules and express them in a programming language, you
+            provide the answers (typically called labels) along with the data, and the machine will infer the rules that
+            determine the relationship between the answers and the data.</p>
+
+          <img class="img-fluid" src="img/hello_world/03.png" alt="">
+          <span class="caption text-muted">Machine Learning determines the "rules" by looking at the data and
+            answers</span>
+
+          <p>The data and labels are used to create Machine Learning Algorithms (The "Rules") which are typically called
+            Models.</p>
+          <p>Using this model, when the Machine gets new data, it can predict or correctly label them. </p>
+          <img class="img-fluid" src="img/hello_world/04.png" alt="">
+          <span class="caption text-muted">When the model recieves new data, it predicts the answer by looking at the
+            rules</span>
+
+          <div class="container">
+            <div class="row">
+
+              <div class="col-sm">
+                <p>For example, if we train the model with labelled images of Cats and Dogs, the model would be able to
+                  predict when a new image is shown whether it is a Cat or a Dog. </p>
+
+              </div>
+              <div class="col-sm">
+                <div class="mt-4"> <img class="img-fluid" src="img/hello_world/05.png" alt="">
+                  <span class="caption text-muted">Learning by experience</span></div>
+
+              </div>
+            </div>
+          </div>
+          <p>
+            Now that we have a basic understanding, let us get coding!
+
+          </p>
+          <h2 class="section-heading">Creating your first Machine Learning Model </h2>
+          <p>Consider the following set of numbers. Are you able to figure out the relationship between them?</p>
+          <pre><code>
+          X: -1 0 1 2 3 4 5 
+          Y: -1 1 3 5 7 9 11
+          </code></pre>
+
+          <p>As you look at them you might notice that the X value is increasing by 1 as you read left to right, and the
+            corresponding Y value is increasing by 2. So you probably think Y=2X plus or minus something. Then you'd
+            probably look at the zero on X and see that Y = 1, and you'd come up with the relationship Y=2X+1.
+          </p>
+          <p>Now if we are given a value of 6 for X, we can accurately predict the value of Y to be 2*6 + 1 = 13</p>
+          <p>
+            It must have been pretty easy to figure this out for you. Now let's try to get a computer to figure this
+            out.
+            Put on your coding hats because we are about to code our first Machine Learning model!
+          </p>
+
+          <h4 class="mt-5 h3"><strong>Setting up the environment</strong> </h4>
+
+          <p>We will use <a href="https://colab.research.google.com/">Google Colab</a> for writing our code.</p>
+          <h5 class="h4"><strong>So what is Google Colab?</strong></h5>
+          <p>It’s an incredible online browser-based platform that allows us to train our models on machines for free!
+            Sounds too good to be true, but thanks to Google, we can now work with large datasets, build complex models,
+            and even share our work seamlessly with others.</p>
+
+          <div class="text-center">
+
+            <img class="img-fluid" src="img/hello_world/colab_search.jpg" alt="">
+            <span class="caption text-muted">Google Colab Landing page- Click on new notebook to get started</span>
+
+          </div>
+          <p>So basically it would be where we would train and use our model. You would need a Google Account for
+            using Colab. Once that is done create a new notebook. Voila! You have your first notebook.
+          </p>
+
+          <div class="text-center">
+
+            <img class="img-fluid" src="img/hello_world/new_notebook.jpg" alt="">
+            <span class="caption text-muted">Your first notebook. Feel free to look around and try figuring things
+              out!</span>
+
+          </div>
+
+          <p>Check out this tutorial for learning how to use Google Colab if you have not used it before.</p>
+          <p>Now we write code for real!</p>
+
+          <h4 class="mt-5 h3"><strong>Let's get coding!</strong> </h4>
+          <p>The complete notebook is available <a
+              href="https://colab.research.google.com/drive/1GD7JFL1cOqDbCHGA_a9xVa3EeRAGTmDw?usp=sharing">here</a> and
+            <a href="https://github.com/navendu-pottekkat/ml-hello-world">here(GitHub)</a>.</p>
+
+          <h5 class="h4"><strong>Imports</strong></h5>
+
+          <p>We are importing TensorFlow and calling it tf for ease of use.</p>
+
+          <p> Next we import a library called numpy, which helps us to represent our data as lists easily and quickly.
+          </p>
+
+          <p> The framework for defining a model as a set of sequential layers is called keras, so we import that too.
+          </p>
+
+          <pre class="bg-dark text-light pl-2">
+            <code>
+import tensorflow as tf
+import numpy as np
+from tensorflow import keras
+            </code>
+          </pre>
+          <h5 class="h4 pt-5"><strong>Create the data set </strong></h5>
+          <p>As shown earlier, we have 7 Xs and 7 Ys and we found the relationship between them to be Y = 2X + 1</p>
+          <p>A python library called numpy provides lots of array type data structures that are a defacto standard way
+            of doing it. We declare that we want to use these by specifying the values as an array in numpy using
+            np.array[]</p>
+          <pre class="bg-dark text-light pl-2">
+              <code>
+xs = np.array([-1.0, 0.0, 1.0, 2.0, 3.0, 4.0, 5.0], dtype=float)
+ys = np.array([-1.0, 1.0, 3.0, 5.0, 7.0, 9.0, 11.0], dtype=float)
+              </code>
+            </pre>
+          <h5 class="h4 pt-5"><strong>Define the model </strong></h5>
+
+          <p>Next we will create the simplest possible neural network. It has 1 layer, and that layer has 1 neuron, and
+            the input shape to it is just 1 value.</p>
+          <pre class="bg-dark text-light pl-2"><code>
+model = tf.keras.Sequential([keras.layers.Dense(units=1, input_shape=[1])])
+            </code></pre>
+          <p>You know that in the function, the relationship between the numbers is y=2x+1.
+          </p>
+          <p>When the computer is trying to 'learn' that, it makes a guess...maybe y=10x+10. The loss function measures
+            the guessed answers against the known correct answers and measures how well or how badly it did.</p>
+          <p>Next, the model uses the optimiser function to make another guess. Based on the loss function's result, it
+            will try to minimise the loss. At this point maybe it will come up with something like y=5x+5. While this is
+            still pretty bad, it's closer to the correct result (i.e. the loss is lower).</p>
+          <p>The model will repeat this for the number of epochs which you will see shortly.
+          </p>
+          <p>But first, here's how we tell it to use mean squared error for the loss and stochastic gradient descent
+            (sgd) for the optimiser. You don't need to understand the maths for these yet, but you can see that they
+            work! :)</p>
+          <p>Over time you will learn the different and appropriate loss and optimiser functions for different
+            scenarios.</p>
+          <pre class="bg-dark text-light pl-2">
+              <code>
+model.compile(optimizer='sgd', loss='mean_squared_error')
+</code>
+</pre>
+          <h5 class="h4 pt-5"><strong>Training the model</strong></h5>
+          <p>Training is the process where the model learns as we said about before. model.fit function is used for
+            fitting the training data that we have created to the model.</p>
+          <p>When you run this code, you'll see the loss will be printed out for each epoch.</p>
+          <pre class="bg-dark text-light pl-2"><code>
+  Epoch 1/500
+  1/1 [==============================] - 0s 3ms/step - loss: 59.7111
+  Epoch 2/500
+  1/1 [==============================] - 0s 2ms/step - loss: 41.0885
+  Epoch 3/500
+  1/1 [==============================] - 0s 2ms/step - loss: 28.2783
+</code>
+</pre>
+          <p>You can see that for the first few epochs, the loss value is quite large and with each step it is getting
+            smaller.</p>
+          <h5 class="h4 pt-4"><strong>Using the trained model to make predictions </strong></h5>
+          <p>Finally! Our model has been trained and is ready to face the real world. Let's see how well our model can
+            predict the value of Y given X.</p>
+          <p>We use the model.predict method to have it figure out Y for any value of X. </p>
+          <p>So, if we take the value of X as 8, then we know the value of Y is 2*8 + 1 = 17. Let's see if our model can
+            get it right.</p>
+          <pre class="bg-dark text-light pl-2">
+              <code>
+print(model.predict([8.0]))
+
+[[17.00325]]</code>
+            </pre>
+          <p>That ended up a little over than the value that we would expect. </p>
+          <p>Machine Learning deal with probabilities, so given the data that we fed the model with, it calculated that
+            there is a very high probability that the relationship between X and Y is Y=2X+1, but with only 7 data
+            points we can't know for sure. As a result, the result for 8 is very close to 17, but not necessarily 17.
+          </p>
+          <p>That is it! You have covered the core concepts of Machine Learning that you would use in very different
+            scenarios.</p>
+          <p>The process/steps we have used here is what you would do when you build complex models. Happy coding!</p>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <hr>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <ul class="list-inline text-center">
+            <li class="list-inline-item">
+              <a target="_blank" href="https://www.linkedin.com/in/navendup/">
+                <span class="fa-stack fa-lg">
+                  <i class="fas fa-circle fa-stack-2x"></i>
+                  <i class="fab fa-linkedin fa-stack-1x fa-inverse"></i>
+                </span>
+              </a>
+            </li>
+            <li class="list-inline-item">
+              <a target="_blank" href="https://medium.com/@navendupottekkat">
+                <span class="fa-stack fa-lg">
+                  <i class="fas fa-circle fa-stack-2x"></i>
+                  <i class="fab fa-medium fa-stack-1x fa-inverse"></i>
+                </span>
+              </a>
+            </li>
+            <li class="list-inline-item">
+              <a target="blank" href="https://github.com/navendu-pottekkat/ds-bootcamp">
+                <span class="fa-stack fa-lg">
+                  <i class="fas fa-circle fa-stack-2x"></i>
+                  <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+                </span>
+              </a>
+            </li>
+            <li class="list-inline-item">
+              <a target="blank" href="https://join.slack.com/t/datasciencebo-aox8972/shared_invite/zt-ekk0kdt0-T4C5Evcqb8ixyuGnJJyXpw">
+                <span class="fa-stack fa-lg">
+                  <i class="fas fa-circle fa-stack-2x"></i>
+                  <i class="fab fa-slack fa-stack-1x fa-inverse"></i>
+                </span>
+              </a>
+            </li>
+          </ul>
+          <p class="copyright text-muted">Copyright &copy; Data Science Bootcamp 2020</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Custom scripts for this template -->
+  <script src="js/clean-blog.min.js"></script>
+
+</body>
+
+</html>
