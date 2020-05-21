@@ -50,7 +50,9 @@
   <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
     <div class="container">
       <a class="navbar-brand" href="index.html">Data Science Bootcamp</a>
-      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+        data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
+        aria-label="Toggle navigation">
         Menu
         <i class="fas fa-bars"></i>
       </button>
@@ -66,7 +68,9 @@
             <a class="nav-link" href="contribute.html">Contribute</a>
           </li>
           <li class="nav-item">
-            <a target="_blank" class="nav-link" href="https://join.slack.com/t/datasciencebo-aox8972/shared_invite/zt-ekk0kdt0-T4C5Evcqb8ixyuGnJJyXpw">Join Slack Channel</a>
+            <a target="_blank" class="nav-link"
+              href="https://join.slack.com/t/datasciencebo-aox8972/shared_invite/zt-ekk0kdt0-T4C5Evcqb8ixyuGnJJyXpw">Join
+              Slack Channel</a>
           </li>
         </ul>
       </div>
@@ -80,11 +84,11 @@
       <div class="row">
         <div class="col-lg-8 col-md-10 mx-auto">
           <div class="post-heading">
-            <h1>Hello World! for Machine Learning</h1>
-            <h2 class="subheading">Create your first Machine Learning model with a few lines of code</h2>
+            <h1>Classifying fashion apparels- Getting started with Computer Vision</h1>
+            <h2 class="subheading">Create a model to classify images of fashion apparels.</h2>
             <span class="meta">Posted by
               <a href="https://www.linkedin.com/in/navendup/">Navendu Pottekkat</a>
-              on May 15, 2020</span>
+              on May 21, 2020</span>
           </div>
         </div>
       </div>
@@ -96,66 +100,360 @@
     <div class="container">
       <div class="row">
         <div class="col-lg-8 col-md-10 mx-auto">
-          <p>Never in all their history have men been able truly to conceive of the world as one: a single sphere, a
-            globe, having the qualities of a globe, a round earth in which all the directions eventually meet, in which
-            there is no center because every point, or none, is center — an equal earth which all men occupy as equals.
-            The airman's earth, if free men make it, will be truly round: a globe in practice, not in theory.</p>
+          <p>In this guide, you will be training a neural network model to classify images of clothing like shirts,
+            coats, sneakers etc. </p>
 
-          <p>Science cuts two ways, of course; its products can be used for both good and evil. But there's no turning
-            back from science. The early warnings about technological dangers also come from science.</p>
+          <blockquote class="blockquote">Whew! That sounds a lot for a beginner tutorial, I mean we are just getting
+            started right?
+          </blockquote>
 
-          <p>What was most significant about the lunar voyage was not that man set foot on the Moon but that they set
-            eye on the earth.</p>
+          <p>Not to worry! Don’t get overwhelmed, it’s okay if you don’t understand all the details. You would learn all
+            the details as you go deeper into the article, trust me :) .</p>
 
-          <p>A Chinese tale tells of some men sent to harm a young girl who, upon seeing her beauty, become her
-            protectors rather than her violators. That's how I felt seeing the Earth for the first time. I could not
-            help but love and cherish her.</p>
+          <p>If you are totally new to machine learning, I would suggest you check out my <a
+              href="./post_hello_world.html">beginner tutorial.</a> </p>
 
-          <p>For those who have seen the Earth from space, and for the hundreds and perhaps thousands more who will, the
-            experience most certainly changes your perspective. The things that we share in our world are far more
-            valuable than those which divide us.</p>
+          <p>With that said, let’s get started!</p>
 
-          <h2 class="section-heading">The Final Frontier</h2>
+          <h2 class="section-heading">The Data</h2>
 
-          <p>There can be no thought of finishing for ‘aiming for the stars.’ Both figuratively and literally, it is a
-            task to occupy the generations. And no matter how much progress one makes, there is always the thrill of
-            just beginning.</p>
+          <p>We will be using the <a href="https://github.com/zalandoresearch/fashion-mnist">Fashion-MNIST</a> dataset.
+            It is a
+            dataset comprised of 60,000 square (28x28 pixel) grayscale images of 10 types of clothing. </p>
 
-          <p>There can be no thought of finishing for ‘aiming for the stars.’ Both figuratively and literally, it is a
-            task to occupy the generations. And no matter how much progress one makes, there is always the thrill of
-            just beginning.</p>
-
-          <blockquote class="blockquote">The dreams of yesterday are the hopes of today and the reality of tomorrow.
-            Science has not yet mastered prophecy. We predict too much for the next year and yet far too little for the
-            next ten.</blockquote>
-
-          <p>Spaceflights cannot be stopped. This is not the work of any one man or even a group of men. It is a
-            historical process which mankind is carrying out in accordance with the natural laws of human development.
+          <p>Each of the apparels are assigned a particular label:
           </p>
 
-          <h2 class="section-heading">Reaching for the Stars</h2>
+          <ul>
+            <li>0- T-shirt/top</li>
+            <li>1- Trouser</li>
+            <li>2- Pullover</li>
+            <li>3- Dress</li>
+            <li>4- Coat</li>
+            <li>5- Sandal</li>
+            <li>6- Shirt</li>
+            <li>7- Sneaker</li>
+            <li>8- Bag</li>
+            <li>9- Ankle boot</li>
+          </ul>
 
-          <p>As we got further and further away, it [the Earth] diminished in size. Finally it shrank to the size of a
-            marble, the most beautiful you can imagine. That beautiful, warm, living object looked so fragile, so
-            delicate, that if you touched it with a finger it would crumble and fall apart. Seeing this has to change a
-            man.</p>
+          <img class="img-fluid"
+            src="https://raw.githubusercontent.com/zalandoresearch/fashion-mnist/master/doc/img/fashion-mnist-sprite.png"
+            alt="">
 
-          <a href="#">
-            <img class="img-fluid" src="img/post-sample-image.jpg" alt="">
-          </a>
-          <span class="caption text-muted">To go places and do things that have never been done before – that’s what
-            living is all about.</span>
+          <span class="caption text-muted">The Fashion-MNIST dataset with 10 different classes of fashion
+            apparels.</span>
 
-          <p>Space, the final frontier. These are the voyages of the Starship Enterprise. Its five-year mission: to
-            explore strange new worlds, to seek out new life and new civilizations, to boldly go where no man has gone
-            before.</p>
+          <h2 class="section-heading">Let’s get to the code</h2>
 
-          <p>As I stand out here in the wonders of the unknown at Hadley, I sort of realize there’s a fundamental truth
-            to our nature, Man must explore, and this is exploration at its greatest.</p>
+          <p>We will use TensorFlow and TensorFlow Keras for building our model. </p>
 
-          <p>Placeholder text by
-            <a href="http://spaceipsum.com/">Space Ipsum</a>. Photographs by
-            <a href="https://www.flickr.com/photos/nasacommons/">NASA on The Commons</a>.</p>
+          <p>TensorFlow is an end-to-end open source platform for machine learning. It has a comprehensive, flexible
+            ecosystem of tools, libraries and community resources that lets researchers push the state-of-the-art in ML
+            and developers easily build and deploy ML powered applications.</p>
+
+          <p>Keras is TensorFlow's high-level API for building and training deep learning models.</p>
+
+          <p>You can read more about them. Getting a basic idea about the tools are enough for now as you would learn
+            more about TensorFlow and Keras as you go along.</p>
+
+          <p>As you will see in the code, it is very intuitive and user-friendly and you would be able to build Machine
+            Learning models on the fly. </p>
+
+          <p><strong><i>Less talking, more code!!!</i></strong></p>
+
+          <h4 class="mt-5 h3"><strong>Importing the libraries </strong> </h4>
+
+          <p>We will use Google Colab as our environment to write code.</p>
+
+          <p> Open up a new <a href="https://colab.research.google.com/">Colab Notebook</a>. The code shown here in each
+            section could be run in new cells each. If you
+            are not entirely sure about what Colab is or if you have never worked with Jupyter Notebooks before, I would
+            sugeest you to check out the <a href="https://colab.research.google.com/notebooks/intro.ipynb"> introductory
+              notebook to get started.</a></p>
+
+          <p>We will use the numpy and matplotlib also as helper libraries. </p>
+
+          <pre class="bg-dark text-light pl-2">
+            <code>
+# Import the necessary libraries
+
+import tensorflow as tf
+from tensorflow import keras
+import numpy as np
+import matplotlib.pyplot as plt
+from keras.utils import np_utils 
+import random
+</code>
+</pre>
+
+          <h4 class="mt-5 h3"><strong>Importing the data </strong> </h4>
+
+          <p>The <a href="https://keras.io/api/datasets/fashion_mnist/">Fashion-MNIST</a> data is readily available in
+            Keras datasets. </p>
+
+          <pre class="bg-dark text-light pl-2"><code>
+# Import the data from keras.dataset
+
+(train_images, train_labels), (test_images, test_labels) = keras.datasets.fashion_mnist.load_data()
+          </code></pre>
+
+          <p>This will load the fashion_mnist data into 4 NumPy arrays:</p>
+
+          <ul>
+            <li>The train_images and train_labels arrays are the training set—the data the model uses to learn.</li>
+            <li>The model is tested against the test set, the test_images, and test_labels arrays.</li>
+          </ul>
+
+          <h4 class="mt-5 h3"><strong>Exploring the data </strong> </h4>
+
+          <p>The following code shows that there are 6000 training images and 1000 test images of 28x28 pixels. We will
+            train the model on the training images and test the performance of the model by performing predictions on
+            the test images. The images have been labelled correspondingly in the train_labels and test_labels.</p>
+
+          <pre class="bg-dark text-light pl-2"><code>
+# Check out the shape of the dataset
+
+print("Train Images Shape:",train_images.shape)
+print("Train Labels Shape:",train_labels.shape)
+print("Test Images Shape:",test_images.shape)
+print("Test Labels Shape:",test_labels.shape)
+          </code></pre>
+
+          <pre class="bg-secondary text-light pl-2"><code>
+Train Images Shape: (60000, 28, 28)
+Train Labels Shape: (60000,)
+Test Images Shape: (10000, 28, 28)
+Test Labels Shape: (10000,)
+          </code></pre>
+
+          <p>Now let’s take a look at the data we just loaded. </p>
+
+          <pre class="bg-dark text-light pl-2"><code>
+# Check out loaded images!
+
+plt.figure()
+
+fig,ax = plt.subplots(2,2)
+
+ax[0][0].imshow(train_images[1])
+ax[0][1].imshow(train_images[1000])
+ax[1][0].imshow(train_images[22000])
+ax[1][1].imshow(train_images[44000])
+          </code></pre>
+
+          <img class="img-fluid" src="./img/fashion_mnist/1.png" alt="">
+
+          <p>Since the pixel values lie between 0-255, we convert it into values between 0 and 1. I.e we just divide the
+            pixel values by 255.0.</p>
+
+          <pre class="bg-dark text-light pl-2"><code>
+# We normalise the loaded images
+# i.e we convert the pixel values which lie between 0-255 into values between 0-1
+
+train_images = train_images/255.0
+test_images = test_images/255.0
+              </code></pre>
+
+          <h4 class="mt-5 h3"><strong>Creating the model </strong> </h4>
+
+          <p>Building a neural network requires configuring the layers of the model and then compiling the model.</p>
+
+          <p>Layers are the basic building blocks of a neural network. They extract features or representations from the
+            data that is fed into them. After training, these features would help us solve the problem at hand -
+            classifying fashion apparels.</p>
+
+          <p>Here we will chain together some simple layers to create our model. </p>
+
+          <pre class="bg-dark text-light pl-2"><code>
+# We are building a sequential model
+
+model = tf.keras.models.Sequential()
+
+# Add the input layer
+
+model.add(tf.keras.layers.Flatten(input_shape=(28,28)))
+
+# Add a hidden layer
+
+model.add(tf.keras.layers.Dense(units=128, activation="relu"))
+
+# Add an output layer
+
+model.add(tf.keras.layers.Dense(units=10))
+          </code></pre>
+
+          <p>The first layer of the network, <a target="_blank"
+              href="https://www.tensorflow.org/api_docs/python/tf/keras/layers/Flatten">tf.keras.layers.Flatten</a>,
+            transforms the image which is a 2D
+            array (of 28x28 pixels) to a 1D array (of size 28*28 = 784). It basically takes the input image and lines up
+            each row of pixels back to back. This layer is used only for transforming the data.</p>
+
+          <p>Once the input images have been transformed by the Flatten layer, the network then has two
+            <a target="_blank"
+              href="https://www.tensorflow.org/api_docs/python/tf/keras/layers/Dense">tf.keras.layers.Dense</a> layers.
+          </p>
+
+          <p>These are well, densely connected or fully connected layers. </p>
+
+          <img class="img-fluid"
+            src="https://www.oreilly.com/library/view/tensorflow-for-deep/9781491980446/assets/tfdl_0401.png" alt="">
+
+          <span class="caption text-muted">Densely connected layers</span>
+
+          <p>The first Dense layer has 128 neurons and the second Dense layer, which is the last layer of our network,
+            has 10 neurons. The last layer of the network is our output layer which would provide the output of the
+            model. Each of the 10 nodes would contain the probability score that indicates the current image belongs to
+            one of the 10 classes. (Remember there are 10 classifications for the apparels in our data)</p>
+
+          <h4 class="mt-5 h3"><strong>Compile the model </strong> </h4>
+
+          <p>We are almost ready to train our model! Before that we have to configure a few more settings.</p>
+
+          <p>Loss function: This measures how accurate the model is during training. You want to minimize this function
+            to "steer" the model in the right direction. I.e the model tries to minimise the loss function with each
+            step of the training to improve the model.</p>
+
+          <p>Optimizer: Optimizers update the weight parameters to minimize the loss function. </p>
+
+          <p>Metrics: A metric is a function that is used to judge the performance of your model. Metric functions are
+            similar to loss functions, except that the results from evaluating a metric are not used when training the
+            model. The following model uses accuracy, the fraction of the images that are correctly classified.</p>
+
+          <pre class="bg-dark text-light pl-2"><code>
+model.compile(loss=tf.keras.losses.SparseCategoricalCrossentropy(from_logits=True), optimizer="adam", metrics=["accuracy"])
+          </code></pre>
+
+          <p>You don't need to know all the details about the loss function <a target="_blank"
+              href="https://keras.io/api/losses/probabilistic_losses/#sparsecategoricalcrossentropy-class">sparse_categorical_crossentropy</a>
+            or <a target="_blank" href="https://keras.io/api/optimizers/">adam</a> optimizer
+            for now. You can check out the docs if you need to learn more. For now having a grasp of what loss function
+            and optimizers are would be enough.</p>
+
+          <h4 class="mt-5 h3"><strong>Train the model </strong> </h4>
+
+          <p>For training our model, we simply feed the model our training data and labels contained in train_images and
+            train_labels respectively.</p>
+
+          <p>We call the model.fit method to “fit” the model to the training data.</p>
+
+          <pre class="bg-dark text-light pl-2"><code>
+model.fit(train_images, train_labels, epochs=10)
+  </code></pre>
+
+          <pre class="bg-secondary text-light pl-2"><code>
+Epoch 1/10
+1875/1875 [==============================] - 3s 2ms/step - loss: 0.3768 - accuracy: 0.8636
+Epoch 2/10
+1875/1875 [==============================] - 3s 2ms/step - loss: 0.3394 - accuracy: 0.8762
+Epoch 3/10
+1875/1875 [==============================] - 3s 2ms/step - loss: 0.3145 - accuracy: 0.8851
+Epoch 4/10
+1875/1875 [==============================] - 3s 2ms/step - loss: 0.2965 - accuracy: 0.8902
+Epoch 5/10
+1875/1875 [==============================] - 3s 2ms/step - loss: 0.2818 - accuracy: 0.8957
+Epoch 6/10
+1875/1875 [==============================] - 3s 2ms/step - loss: 0.2698 - accuracy: 0.9002
+Epoch 7/10
+1875/1875 [==============================] - 3s 2ms/step - loss: 0.2582 - accuracy: 0.9043
+Epoch 8/10
+1875/1875 [==============================] - 3s 2ms/step - loss: 0.2495 - accuracy: 0.9074
+Epoch 9/10
+1875/1875 [==============================] - 3s 2ms/step - loss: 0.2409 - accuracy: 0.9095
+Epoch 10/10
+1875/1875 [==============================] - 4s 2ms/step - loss: 0.2324 - accuracy: 0.9137
+          </code></pre>
+
+          <p>We can see the loss and accuracy metrics displayed as the model is being trained. As the model trains, the
+            loss decreases and accuracy increases. Kudos! Your model is learning!</p>
+
+          <h4 class="mt-5 h3"><strong>Evaluate the model </strong> </h4>
+
+          <p>The model has about 90% (0.90) accuracy on the training data. You may have values somewhere around 90% (not
+            to
+            worry if it is slightly different as it is prone to some randomness)</p>
+
+          <p>But that is not enough! We still haven't tested the model. We will now test our model on our test data,
+            which the model has never seen before! Let’s see how it performs.</p>
+
+          <pre class="bg-dark text-light pl-2"><code>
+test_loss, test_acc = model.evaluate(test_images,  test_labels, verbose=2)
+
+print('\nTest accuracy:', test_acc)
+          </code></pre>
+
+          <pre class="bg-secondary text-light pl-2"><code>
+313/313 - 1s - loss: 0.3366 - accuracy: 0.8838
+
+Test accuracy: 0.8838000297546387
+          </code></pre>
+
+          <p>It turns out that the accuracy on the test dataset is a little less than the train dataset. This could mean
+            that our model is overfitting on our training data. We will not worry about that now. In the future
+            articles, we will discuss what causes overfitting and how we can prevent it.</p>
+
+          <h4 class="mt-5 h3"><strong>Making Predictions </strong> </h4>
+
+          <p>Finally! We can now use our model to make predictions on images. Here we have a function to plot 100 random
+            test images and their predicted labels. If a prediction result is different from the label provided in the
+            test_labels dataset, we will highlight it in red color.</p>
+
+          <pre class="bg-dark text-light pl-2"><code>
+# A helper function that returns 'red'/'black' depending on if its two input
+# parameter matches or not.
+
+def get_label_color(val1, val2):
+  if val1 == val2:
+    return 'black'
+  else:
+    return 'red'
+
+# Predict the labels of digit images in our test dataset.
+
+predictions = model.predict(test_images)
+
+# As the model output 10 float representing the probability of the input image
+# being a digit from 0 to 9, we need to find the largest probability value
+# to find out which digit the model predicts to be most likely in the image.
+
+prediction_digits = np.argmax(predictions, axis=1)
+
+# Then plot 100 random test images and their predicted labels.
+# If a prediction result is different from the label provided label in "test"
+# dataset, we will highlight it in red color.
+
+plt.figure(figsize=(18, 18))
+for i in range(100):
+  ax = plt.subplot(10, 10, i+1)
+  plt.xticks([])
+  plt.yticks([])
+  plt.grid(False)
+  image_index = random.randint(0, len(prediction_digits))
+  plt.imshow(test_images[image_index], cmap=plt.cm.gray)
+  ax.xaxis.label.set_color(get_label_color(prediction_digits[image_index],\
+                                           test_labels[image_index]))
+  plt.xlabel('Predicted: %d' % prediction_digits[image_index])
+plt.show()
+          </code></pre>
+
+          <img class="img-fluid" src="./img/fashion_mnist/2.png" alt="">
+
+          <p>Wow! You have done it! You have successfully created a model which can look at images of fashion apparels
+            and classify them with a good certainty! When you think about it, all it took was a few lines of code.</p>
+
+          <p>We see a few errors, but for our first model, things are looking pretty good!</p>
+
+          <p>With this new knowledge of TensorFlow, Keras and machine learning in general, you would be able to create
+            your own models for a wide variety of datasets. Moreover, the tools and techniques you learned here are the
+            foundations of complex models used in practice. </p>
+
+          <p>In the coming tutorial, we will take a look at Convolutional Neural Networks- a type of neural network used
+            widely for computer vision applications. We will see that we can improve the accuracy of our model further
+            using CNNs.</p>
+
+          <p>Happy Coding!
+          </p>
+
         </div>
       </div>
     </div>
@@ -170,31 +468,40 @@
         <div class="col-lg-8 col-md-10 mx-auto">
           <ul class="list-inline text-center">
             <li class="list-inline-item">
-              <a href="#">
+              <a target="_blank" href="https://www.linkedin.com/in/navendup/">
                 <span class="fa-stack fa-lg">
                   <i class="fas fa-circle fa-stack-2x"></i>
-                  <i class="fab fa-twitter fa-stack-1x fa-inverse"></i>
+                  <i class="fab fa-linkedin fa-stack-1x fa-inverse"></i>
                 </span>
               </a>
             </li>
             <li class="list-inline-item">
-              <a href="#">
+              <a target="_blank" href="https://medium.com/@navendupottekkat">
                 <span class="fa-stack fa-lg">
                   <i class="fas fa-circle fa-stack-2x"></i>
-                  <i class="fab fa-facebook-f fa-stack-1x fa-inverse"></i>
+                  <i class="fab fa-medium fa-stack-1x fa-inverse"></i>
                 </span>
               </a>
             </li>
             <li class="list-inline-item">
-              <a href="#">
+              <a target="blank" href="https://github.com/navendu-pottekkat/ds-bootcamp">
                 <span class="fa-stack fa-lg">
                   <i class="fas fa-circle fa-stack-2x"></i>
                   <i class="fab fa-github fa-stack-1x fa-inverse"></i>
                 </span>
               </a>
             </li>
+            <li class="list-inline-item">
+              <a target="blank"
+                href="https://join.slack.com/t/datasciencebo-aox8972/shared_invite/zt-ekk0kdt0-T4C5Evcqb8ixyuGnJJyXpw">
+                <span class="fa-stack fa-lg">
+                  <i class="fas fa-circle fa-stack-2x"></i>
+                  <i class="fab fa-slack fa-stack-1x fa-inverse"></i>
+                </span>
+              </a>
+            </li>
           </ul>
-          <p class="copyright text-muted">Copyright &copy; Your Website 2019</p>
+          <p class="copyright text-muted">Copyright &copy; Data Science Bootcamp 2020</p>
         </div>
       </div>
     </div>
@@ -206,8 +513,6 @@
 
   <!-- Custom scripts for this template -->
   <script src="js/clean-blog.min.js"></script>
-
-  <script src="https://gist.github.com/navendu-pottekkat/e44f085a53ccf264226cea5ec570c1f4.js"></script>
 
 </body>
 
