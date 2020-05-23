@@ -1,0 +1,948 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>Classifying fashion apparels- Getting started with Computer Vision</title>
+
+  <!-- Bootstrap core CSS -->
+  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Custom fonts for this template -->
+  <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+  <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet'
+    type='text/css'>
+  <link
+    href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800'
+    rel='stylesheet' type='text/css'>
+
+  <!-- Custom styles for this template -->
+  <link href="css/clean-blog.min.css" rel="stylesheet">
+
+  <link rel="apple-touch-icon" sizes="57x57" href="/apple-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="/apple-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="/apple-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/apple-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="/apple-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="/apple-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="/apple-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="/apple-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-icon-180x180.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="/android-icon-192x192.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/manifest.json">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+  <meta name="theme-color" content="#ffffff">
+
+</head>
+
+<body>
+
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">Data Science Bootcamp</a>
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+        data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
+        aria-label="Toggle navigation">
+        Menu
+        <i class="fas fa-bars"></i>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="index.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="about.html">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="contribute.html">Contribute</a>
+          </li>
+          <li class="nav-item">
+            <a target="_blank" class="nav-link"
+              href="https://join.slack.com/t/datasciencebo-aox8972/shared_invite/zt-ekk0kdt0-T4C5Evcqb8ixyuGnJJyXpw">Join
+              Slack Channel</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Page Header -->
+  <header class="masthead"
+    style="background-image: url('https://raw.githubusercontent.com/zalandoresearch/fashion-mnist/master/doc/img/fashion-mnist-sprite.png')">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="post-heading">
+            <h1>Classifying fashion apparels- Getting started with Computer Vision</h1>
+            <h2 class="subheading">Create a model to classify images of fashion apparels.</h2>
+            <span class="meta">Posted by
+              <a href="https://www.linkedin.com/in/navendup/">Navendu Pottekkat</a>
+              on May 21, 2020</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Post Content -->
+  <article>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+
+          <p dir="ltr">
+            As the adoption of machine learning models have evolved over the past
+            couple of years, so has the need to deploy them on mobile and embedded
+            devices. Instead of sending data back and forth from a server, there needs
+            to be a viable, low-latency on-device solution for performing inference on
+            machine learning models.
+          </p>
+
+          <p dir="ltr">
+            Back in 2017, Google introduced TensorFlow Lite, a set of tools to run
+            TensorFlow models on mobile, embedded and IoT devices. It is designed to be
+            lightweight, cross-platform and fast.
+          </p>
+
+          <p dir="ltr">
+            With the recent release of TensorFlow Lite Model Maker, which makes
+            deploying machine learning models to end devices as easy as writing a few
+            lines of code, and with over 4 billion edge devices worldwide in every
+            different platforms, adding this tool to your belt would grant you a ticket
+            to the future of machine learning.
+          </p>
+
+          <blockquote class="blockquote">
+            “Well, the future is strong in this one!”
+          </blockquote>
+
+          <p dir="ltr">
+            TensorFlow Lite consists of two main components:
+          </p>
+
+          <p dir="ltr">
+            <strong>TensorFlow Lite converter</strong>- converts TensorFlow models into an efficient
+            form for use by the interpreter, and can introduce optimizations to improve
+            binary size and performance.
+          </p>
+
+          <p dir="ltr">
+            <strong>TensorFlow Lite interpreter</strong>- which runs specially optimized models on many
+            different hardware types, including mobile phones, embedded Linux devices,
+            and microcontrollers.
+          </p>
+          <div class="text-center">
+            <img class="img-fluid"
+              src="https://docs.google.com/drawings/u/0/d/sfG9qc7Qf0QLFx0W1x4Vz_Q/image?w=602&amp;h=367&amp;rev=551&amp;ac=1&amp;parent=1R-xnmsU6Hlxk3if2gCzXADQr7sUuxJXwoCpX61lmY-Y"
+              width="602" height="367" />
+
+            <span class="caption text-muted">
+              Components of TensorFlow Lite
+            </span>
+          </div>
+
+          <h2 class="section-heading">
+            Building our TensorFlow Lite model
+          </h2>
+          <p dir="ltr">
+            Now that we have an idea of how TensorFlow Lite works, we will build and
+            deploy a model in an Android app. We will look at different optimization
+            techniques that TensorFlow Lite converter provides as we code along.
+          </p>
+
+          <p dir="ltr">
+            Having a general idea of what TensorFlow Lite is enough to proceed as we
+            will take a look at things more deeply as we build and deploy our model.
+          </p>
+
+          <p dir="ltr">
+            We will be building a handwritten digits classifier app that takes a
+            handwritten input and uses an ML model to infer the digit written.
+          </p>
+
+          <p dir="ltr">
+            We will start by building our digit-classification TensorFlow model. Next
+            we will convert this trained model to TensorFlow Lite. The completed model
+            is available in this Colab.
+          </p>
+          <div class="text-center">
+            <img
+              src="https://lh5.googleusercontent.com/hL-YrSzH0FJ9GplS8GFf2lwEY9xYH21aiLXX7OrZfXwLFkndEGxlIN5iO-uZ8zgcr2kEZkZnIs_c4D2NoXM62G5C9A_L7zMoVNJ0nK_y6Tml31s1SO-MrTnd5If4Q8cV-R-gcJq1"
+              width="185" height="380.33256880733944" />
+          </div>
+
+          <span class="caption text-muted">
+            Although this is a simple app, you will learn all the basic concepts for
+            using TensorFlow Lite and you will be able to use that knowledge to build
+            your own models
+          </span>
+
+
+
+
+          <p dir="ltr">
+            Okay then, let’s take a look at our data!
+          </p>
+
+          <h2 class="section-heading">
+            The data
+          </h2>
+          <p dir="ltr">
+            As you might have guessed, we will be using the MNIST dataset. You might
+            have used this dataset before if you are familiar with computer vision.
+          </p>
+
+          <p dir="ltr">
+            The MNIST dataset contains 60,000 training images and 10,000 testing images
+            of handwritten digits. We will use the dataset to train our digit
+            classification model.
+          </p>
+
+          <p dir="ltr">
+            Each image in the MNIST dataset is a 28x28 grayscale image containing a
+            digit from 0 to 9, and a label identifying which digit is in the image.
+          </p>
+
+          <h2 class="section-heading">
+            The model
+          </h2>
+          <p dir="ltr">
+            We use Keras API to build a TensorFlow model.
+          </p>
+
+          <p dir="ltr">
+            Here we will use a simple convolutional neural network(CNN). If you are not
+            familiar with CNN or Keras, I will suggest you check out this article to
+            get started with TensorFlow, Keras and CNNs. You can also follow along this
+            tutorial from this Colab.
+          </p>
+          <p dir="ltr">
+            We will then train our model on the MNIST “train” dataset. After the model
+            is trained, we will be able to use it to classify the handwritten digits.
+          </p>
+
+
+          <pre class="prettyprint">
+            <code>
+Model: "sequential"
+
+_________________________________________________________________
+
+Layer (type) Output Shape Param #
+
+=================================================================
+
+reshape (Reshape) (None, 28, 28, 1) 0
+
+_________________________________________________________________
+
+conv2d (Conv2D) (None, 26, 26, 32) 320
+
+_________________________________________________________________
+
+conv2d_1 (Conv2D) (None, 24, 24, 64) 18496
+
+_________________________________________________________________
+
+max_pooling2d (MaxPooling2D) (None, 12, 12, 64) 0
+
+_________________________________________________________________
+
+dropout (Dropout) (None, 12, 12, 64) 0
+
+_________________________________________________________________
+
+flatten (Flatten) (None, 9216) 0
+
+_________________________________________________________________
+
+dense (Dense) (None, 10) 92170
+
+=================================================================
+
+Total params: 110,986
+
+Trainable params: 110,986
+
+Non-trainable params: 0
+
+_________________________________________________________________
+
+          </code></pre>
+
+
+          <span class="caption text-muted">
+            Summary of the model
+          </span>
+
+
+          <pre class="prettyprint">
+            <code>
+313/313 [==============================] - 1s 2ms/step - loss: 0.0340 - accuracy: 0.9897
+
+Test accuracy: 0.9897000193595886
+</code> </pre>
+
+
+          <span class="caption text-muted">
+            Test results of the model
+          </span>
+
+
+          <h2 class="section-heading">
+            Converting the model to TensorFlow Lite
+          </h2>
+          <p dir="ltr">
+            As we have trained our digit classifier model, we can now convert it to
+            TensorFlow Lite format for deploying it to our Android app (we will look at
+            it at the end).
+          </p>
+
+          <pre class="prettyprint"><code>
+# Convert Keras model to TF Lite format.
+
+converter =
+tf.lite.TFLiteConverter.from_keras_model(model)
+
+tflite_float_model = converter.convert()
+                    </code></pre>
+          <pre class="prettyprint"><code>
+# Show model size in KBs.
+
+float_model_size = len(tflite_float_model) / 1024
+
+print('Float model size = %dKBs.' % float_model_size)
+                    </code></pre>
+
+
+          <pre class="prettyprint"><code>
+Float model size = 35KBs.
+          </code>
+          </pre>
+
+
+          <p dir="ltr">
+            That is it! All it took was two lines of code. But, as you might wonder, we
+            will need to make our model as small and as fast as possible before using
+            it in our Android app.
+          </p>
+
+          <p dir="ltr">
+            We will use a common technique called quantization for shrinking our model.
+            We will approximate the floating point, 32-bit weights in our model to
+            8-bit numbers which should reduce the size of the model to 1/4th of its
+            original size.
+          </p>
+
+          <p dir="ltr">
+            At inference, weights are converted from 8-bits to floating point and
+            computed using floating-point kernels. This conversion is done once and
+            cached to reduce latency.
+          </p>
+
+          <pre class="prettyprint"><code class="language-py">
+# Here we will use 8-bit number to approximate our 32-bit weights,
+# which in turn shrinks the model size by a factor of 4.
+
+# Re-convert the model to TF Lite using quantization.
+
+converter.optimizations = [tf.lite.Optimize.DEFAULT]
+tflite_quantized_model = converter.convert()
+
+# Show model size in KBs.
+
+quantized_model_size = len(tflite_quantized_model) / 1024
+print('Quantized model size = %dKBs,' % quantized_model_size)
+print('which is about %d%% of the float model size.'\
+      % (quantized_model_size * 100 / float_model_size))
+          </code>
+          </pre>
+
+
+          <pre class="prettyprint"><code>
+Quantized model size = 111KBs,
+
+which is about 25% of the float model size.
+                    </code>
+          </pre>
+
+          <p dir="ltr">
+            As you can see, our quantized model is only 25% of our float model. You can
+            check out the other quantization methods here.
+          </p>
+
+          <p dir="ltr">
+            Since the model is quantized, we might have a bit of an accuracy drop. When
+            converting models to TF Lite, this trade offs between accuracy, size and
+            latency must be taken care of.
+          </p>
+
+          <h2 class="section-heading">
+            Evaluating the TF Lite model
+          </h2>
+          <p dir="ltr">
+            Let’s calculate the accuracy of our quantized model and the float model and
+            check if there is any accuracy drop.
+          </p>
+
+          <p dir="ltr">
+            Please check the Colab for the complete code. We only look into performing
+            inference with the TF Lite model in detail in the section below.
+          </p>
+
+          <p dir="ltr">
+            To perform inference using a TensorFlow Lite model, first we have to load
+            the TF Lite model into memory.
+          </p>
+
+          <pre class="prettyprint"><code class="language-py">
+interpreter = tf.lite.Interpreter(model_content=tflite_model)
+          </code></pre>
+
+
+          <p dir="ltr">
+            Before using the interpreter, we have to allocate memory for the input and
+            output tensors.
+          </p>
+
+          <pre class="prettyprint"><code class="language-py">
+interpreter.allocate_tensors() # memory allocation for input and output tensors
+input_tensor_index = interpreter.get_input_details()[0]["index"]
+output = interpreter.tensor(interpreter.get_output_details()[0]["index"])
+                    </code></pre>
+
+          <p dir="ltr">
+            Before passing the input image to the model, we have to make sure that we
+            convert it to float 32 to match the model’s input data format. We also add
+            a batch dimension to the image. (test_image)
+          </p>
+
+          <p dir="ltr">
+            After preprocessing the input we set the input tensor values.
+          </p>
+
+
+          <pre class="prettyprint">
+            <code class="language-py">
+test_image = np.expand_dims(test_image, axis=0)
+             .astype(np.float32)
+
+interpreter.set_tensor(input_tensor_index, test_image)
+          </code>
+          </pre>
+
+
+          <p dir="ltr">
+            Next, we invoke the interpreter, i.e run inference on the model.
+          </p>
+
+          <pre class="prettyprint"><code>
+interpreter.invoke()
+                    </code></pre>
+
+          <p dir="ltr">
+            We then have to read the output tensor values and convert it back to a
+            proper format.
+          </p>
+
+          <p dir="ltr">
+            In our example, we remove the batch dimension and find the digit with the
+            highest probability. (The digit with the highest probability would be our
+            result)
+          </p>
+
+          <pre class="prettyprint"><code>
+digit = np.argmax(output()[0])
+
+prediction_digits.append(digit)
+                    </code></pre>
+
+          <p dir="ltr">
+            We then check this with the ground truth labels to check the accuracy.
+          </p>
+          <p dir="ltr">
+            After evaluating the float model and the quantized model we get the
+            accuracy of both the models to be almost the same.
+          </p>
+
+          <pre class="prettyprint"><code>
+Float model accuracy = 0.9897
+
+Quantized model accuracy = 0.9897
+
+Accuracy drop = 0.0000
+                    </code></pre>
+
+          <p dir="ltr">
+            There is no significant accuracy drop that would prevent us from deploying
+            the quantized model in our Android app.
+          </p>
+
+          <p dir="ltr">
+            We looked at how we can perform inference on our model in the above steps.
+            We can now download the model to our app and use it to classify handwritten
+            digits.
+          </p>
+
+          <p dir="ltr">
+            We have to follow the same steps as we did above. The only difference is
+            that we use the Java APIs for performing inference.
+          </p>
+
+          <p dir="ltr">
+            In general the steps above are the typical steps that you would take when
+            you are performing inference regardless of the platform that you are in.
+            You can check out this doc for more info.
+          </p>
+
+          <h2 class="section-heading">
+            Deploying the model to the Android app
+          </h2>
+
+          <p dir="ltr">
+            We first download our TensorFlow Lite model.
+          </p>
+
+          <pre class="prettyprint"><code>
+# Save the quantized model to file to the Downloads directory
+
+f = open('mnist.tflite', "wb")
+f.write(tflite_quantized_model)
+f.close()
+
+# Download the digit classification model
+
+from google.colab import files
+files.download('mnist.tflite')
+print('`mnist.tflite` has been downloaded')
+                    </code></pre>
+
+          <p dir="ltr">
+            TensorFlow team has actually built a skeleton app that we can use to plug
+            in our model and perform inference.
+          </p>
+
+          <p dir="ltr">
+            The app gets a handwriting input from the user and using our .tflite model,
+            it would identify the digit.
+          </p>
+
+          <p dir="ltr">
+            You can download the app from
+            <a href="https://github.com/navendu-pottekkat/digit-classifier-tflite/archive/master.zip">
+              here
+            </a>
+            .
+          </p>
+          <p dir="ltr">
+            The downloaded file will contain both the finished app and the starting
+            app.
+          </p>
+
+          <p dir="ltr">
+            In the steps below we will take a look at how we can use our downloaded
+            model in our app. To follow along, use the start folder.
+          </p>
+
+          <p dir="ltr">
+            Copy the mnist.tflite model that we downloaded earlier to the assets folder
+            of our app.
+          </p>
+
+          <pre class="prettyprint"><code>
+start/app/src/main/assets/
+                    </code></pre>
+
+          <p dir="ltr">
+            Open Android Studio and click Import project.
+          </p>
+          <p dir="ltr">
+            Choose the ~/start folder.
+          </p>
+
+          <p dir="ltr">
+            Update build.gradle
+          </p>
+          <p dir="ltr">
+            Go to the build.gradle of the app module and find the dependencies block.
+          </p>
+
+          <pre class="prettyprint"><code>
+dependencies {
+...
+// TODO: Add TF Lite
+...
+}
+                    </code></pre>
+
+          <p dir="ltr">
+            Add TensorFlow Lite to the app's dependencies.
+          </p>
+
+          <pre class="prettyprint"><code>
+implementation 'org.tensorflow:tensorflow-lite:2.0.0'
+                    </code></pre>
+
+          <p dir="ltr">
+            We need to prevent Android from compressing TensorFlow Lite model files
+            when generating the app binary.
+          </p>
+
+          <p dir="ltr">
+            Find this code block.
+          </p>
+          <pre class="prettyprint"><code>
+android {
+...
+// TODO: Add an option to avoid compressing TF Lite
+model file
+...
+}
+                    </code></pre>
+
+          <p dir="ltr">
+            And add the following lines of code.
+          </p>
+
+          <pre class="prettyprint"><code>
+aaptOptions {
+noCompress "tflite"
+}
+                    </code></pre>
+
+          <p dir="ltr">
+            Click Sync Now to apply the changes.
+          </p>
+
+          <p dir="ltr">
+            Initialize TensorFlow Lite interpreter
+          </p>
+          <p dir="ltr">
+            Open DigitClassifier.kt. This is where we add TensorFlow Lite code.
+          </p>
+
+          <p dir="ltr">
+            First, add a field to the DigitClassifier class.
+          </p>
+
+          <pre class="prettyprint"><code>
+class DigitClassifier(private val context: Context) {
+
+private var interpreter: Interpreter? = null
+
+// ...
+
+}
+                    </code></pre>
+
+          <p dir="ltr">
+            Android Studio now raises an error: Unresolved reference: Interpreter .
+            Follow its suggestion and import org.tensorflow.lite.Interpreter to fix the
+            error.
+          </p>
+
+          <p dir="ltr">
+            Next, find this code block.
+          </p>
+
+          <pre class="prettyprint"><code>
+private fun initializeInterpreter() {
+
+// TODO: Load the TF Lite model from file and
+initialize an interpreter.
+
+// ...
+
+}
+                    </code></pre>
+
+          <p dir="ltr">
+            Then add these lines to initialize a TensorFlow Lite interpreter instance
+            using the mnist.tflite model from the assets folder.
+          </p>
+
+          <pre class="prettyprint"><code>
+// Load the TF Lite model from the asset folder.
+
+val assetManager = context.assets
+
+val model = loadModelFile(assetManager, "mnist.tflite")
+                    </code></pre>
+
+          <p dir="ltr">
+            Add these lines right below to read the model input shape from the model.
+          </p>
+
+          <pre class="prettyprint"><code>
+// Read input shape from model file
+
+val inputShape = interpreter.getInputTensor(0).shape()
+
+inputImageWidth = inputShape[1]
+
+inputImageHeight = inputShape[2]
+
+modelInputSize = FLOAT_TYPE_SIZE * inputImageWidth *
+inputImageHeight * PIXEL_SIZE
+
+// Finish interpreter initialization
+
+this.interpreter = interpreter
+                    </code></pre>
+
+          <ul>
+            <li dir="ltr">
+              <p dir="ltr">
+                modelInputSize indicates how many bytes of memory we should
+                allocate to store the input for our TensorFlow Lite model.
+              </p>
+            </li>
+            <li dir="ltr">
+              <p dir="ltr">
+                FLOAT_TYPE_SIZE indicates how many bytes our input data type will
+                require. We use float32, so it is 4 bytes.
+              </p>
+            </li>
+            <li dir="ltr">
+              <p dir="ltr">
+                PIXEL_SIZE indicates how many color channels there are in each
+                pixel. Our input image is a monochrome image, so we only have 1
+                color channel.
+              </p>
+            </li>
+          </ul>
+          <p dir="ltr">
+            After we have finished using the TensorFlow Lite interpreter, we should
+            close it to free up resources. In this sample, we synchronize the
+            interpreter lifecycle to the activity MainActivity lifecycle, and we will
+            close the interpreter when the activity is going to be destroyed. Let's
+            find this comment block in DigitClassifier#close() method.
+          </p>
+
+          <pre class="prettyprint"><code>
+// TODO: close the TF Lite interpreter here
+                    </code></pre>
+
+          <p dir="ltr">
+            Then add this line.
+          </p>
+          <pre class="prettyprint"><code>
+interpreter?.close()
+                    </code></pre>
+
+
+          <p dir="ltr">
+            Run inference with our model
+          </p>
+
+          <p dir="ltr">
+            Our TensorFlow Lite interpreter is set up, so let's write code to recognize
+            the digit in the input image. We will need to do the following:
+          </p>
+
+          <ul>
+            <li dir="ltr">
+              <p dir="ltr">
+                Pre-process the input: convert a Bitmap instance to a ByteBuffer
+                instance containing the pixel values of all pixels in the input
+                image. We use ByteBuffer because it is faster than a Kotlin native
+                float multidimensional array.
+              </p>
+            </li>
+            <li dir="ltr">
+              <p dir="ltr">
+                Run inference.
+              </p>
+            </li>
+            <li dir="ltr">
+              <p dir="ltr">
+                Post-processing the output: convert the probability array to a
+                human-readable string.
+              </p>
+            </li>
+          </ul>
+
+          <p dir="ltr">
+            Find this code block in DigitClassifier.kt.
+          </p>
+
+          <pre class="prettyprint"><code>
+private fun classify(bitmap: Bitmap): String {
+// ...
+// TODO: Add code to run inference with TF Lite.
+// ...
+}
+                    </code></pre>
+
+          <p dir="ltr">
+            Add code to convert the input Bitmap instance to a ByteBuffer instance to
+            feed to the model.
+          </p>
+
+          <pre class="prettyprint"><code>
+// Preprocessing: resize the input image to match the
+model input shape.
+val resizedImage = Bitmap.createScaledBitmap(
+bitmap,
+inputImageWidth,
+inputImageHeight,
+true
+)
+
+val byteBuffer =
+convertBitmapToByteBuffer(resizedImage)
+                    </code></pre>
+
+          <p dir="ltr">
+            Then run inference with the preprocessed input.
+          </p>
+
+          <pre class="prettyprint"><code>
+// Define an array to store the model output.
+
+val output = Array(1) {
+FloatArray(OUTPUT_CLASSES_COUNT) }
+
+// Run inference with the input data.
+
+interpreter?.run(byteBuffer, output)
+                    </code></pre>
+
+          <p dir="ltr">
+            Then identify the digit with the highest probability from the model output,
+            and return a human readable string that contains the prediction result and
+            confidence. Replace the return statement that is in the starting code
+            block.
+          </p>
+
+          <pre class="prettyprint"><code>
+// Post-processing: find the digit that has the highest
+probability
+// and return it a human-readable string.
+
+val result = output[0]
+
+val maxIndex = result.indices.maxBy { result[it] } ?: -1
+
+val resultString = "Prediction Result: %d\nConfidence: %2f".
+
+format(maxIndex, result[maxIndex])
+
+return resultString
+                    </code></pre>
+
+          <h2 class="section-heading">
+            Run and test the app
+          </h2>
+          <p dir="ltr">
+            You can deploy the app to an Android Emulator or a physical Android device.
+          </p>
+
+          <p dir="ltr">
+            Click the Run button in the toolbar.
+          </p>
+
+          <p dir="ltr">
+            Draw digits in the screen and check if the app can recognize it.
+          </p>
+
+
+
+          <p dir="ltr">
+            Well, the model recognises the digits fairly accurately. As you probably
+            saw, the basic process for running inference using the TensorFlow Lite was
+            the same as we did using Python.
+          </p>
+
+          <p dir="ltr">
+            With this knowledge, you would be able to create, optimize and deploy
+            models to edge devices according to your requirement.
+          </p>
+          <p dir="ltr">
+            The best place to learn more about TF Lite is from the official docs.
+          </p>
+
+          <p dir="ltr">
+            Happy Coding!
+          </p>
+          <div>
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <hr>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <ul class="list-inline text-center">
+            <li class="list-inline-item">
+              <a target="_blank" href="https://www.linkedin.com/in/navendup/">
+                <span class="fa-stack fa-lg">
+                  <i class="fas fa-circle fa-stack-2x"></i>
+                  <i class="fab fa-linkedin fa-stack-1x fa-inverse"></i>
+                </span>
+              </a>
+            </li>
+            <li class="list-inline-item">
+              <a target="_blank" href="https://medium.com/@navendupottekkat">
+                <span class="fa-stack fa-lg">
+                  <i class="fas fa-circle fa-stack-2x"></i>
+                  <i class="fab fa-medium fa-stack-1x fa-inverse"></i>
+                </span>
+              </a>
+            </li>
+            <li class="list-inline-item">
+              <a target="blank" href="https://github.com/navendu-pottekkat/ds-bootcamp">
+                <span class="fa-stack fa-lg">
+                  <i class="fas fa-circle fa-stack-2x"></i>
+                  <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+                </span>
+              </a>
+            </li>
+            <li class="list-inline-item">
+              <a target="blank"
+                href="https://join.slack.com/t/datasciencebo-aox8972/shared_invite/zt-ekk0kdt0-T4C5Evcqb8ixyuGnJJyXpw">
+                <span class="fa-stack fa-lg">
+                  <i class="fas fa-circle fa-stack-2x"></i>
+                  <i class="fab fa-slack fa-stack-1x fa-inverse"></i>
+                </span>
+              </a>
+            </li>
+          </ul>
+          <p class="copyright text-muted">Copyright &copy; Data Science Bootcamp 2020</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Custom scripts for this template -->
+  <script src="js/clean-blog.min.js"></script>
+
+  <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js?skin=sunburst"></script>
+
+</body>
+
+</html>
