@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>Virtual Drum Set using OpenCV </title>
+
+  <!-- Bootstrap core CSS -->
+  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Custom fonts for this template -->
+  <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+  <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet'
+    type='text/css'>
+  <link
+    href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800'
+    rel='stylesheet' type='text/css'>
+
+  <!-- Custom styles for this template -->
+  <link href="css/clean-blog.min.css" rel="stylesheet">
+
+  <link rel="apple-touch-icon" sizes="57x57" href="/apple-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="/apple-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="/apple-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/apple-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="/apple-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="/apple-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="/apple-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="/apple-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-icon-180x180.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="/android-icon-192x192.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/manifest.json">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+  <meta name="theme-color" content="#ffffff">
+
+</head>
+
+<body>
+
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">Data Science Bootcamp</a>
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+        data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
+        aria-label="Toggle navigation">
+        Menu
+        <i class="fas fa-bars"></i>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="index.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="about.html">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="contribute.html">Contribute</a>
+          </li>
+          <li class="nav-item">
+            <a target="_blank" class="nav-link"
+              href="https://join.slack.com/t/datasciencebo-aox8972/shared_invite/zt-ekk0kdt0-T4C5Evcqb8ixyuGnJJyXpw">Join
+              Slack Channel</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Page Header -->
+  <header class="masthead"
+    style="background-image: url('./img/virtual_drums/drums_bg.jpg')">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="post-heading">
+            <h2 class="section-heading">Virtual Drum Set using OpenCV</h2>
+            <h2 class="subheading">Learn to build a virtual
+              drum set using computer vision concepts with OpenCV and Python.</h2>
+            <span class="meta">Posted by
+              <a href="https://www.linkedin.com/in/navendup/">Navendu Pottekkat</a>
+              on May 28, 2020</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Post Content -->
+  <article>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <p dir="ltr">If you are new to Computer Vision or if you have a strong urge to
+            play the drums but don’t own one, you have come to the right place!</p>
+          <p dir="ltr">In this tutorial we will build a virtual drum set using basic concepts in
+            computer
+            vision using OpenCV. If you are a beginner to OpenCV, this would be a good tutorial to try.</p>
+          <figure class="ld le lf lg lh li hr hs paragraph-image">
+            <div class="lj lk fq ll ai">
+              <div class="hr hs lc">
+                <div class="lp r fq lq">
+                  <div class="lr ls r">
+                    <div class="text-center"><img class="img-fluid" src="./img/virtual_drums/preview.gif">
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <figcaption class="caption text-muted" data-selectable-paragraph="">virtual-drums in action
+              </figcaption>
+          </figure>
+          <p dir="ltr">We will build the project from scratch and in the end you will have a cool
+            project
+            to show off!</p>
+          <p dir="ltr">All the source code is available in <a href="https://github.com/navendu-pottekkat/virtual-drums"
+              class="bw cu mb mc md me" target="_blank" rel="noopener nofollow">this GitHub repository</a>. To get
+            started, fork and clone <a href="https://github.com/navendu-pottekkat/virtual-drums"
+              class="bw cu mb mc md me" target="_blank" rel="noopener nofollow">the repository</a> in your local
+            machine.</p>
+          <p dir="ltr"><code class="lq mf mg mh mi b">git clone link_to_your_forked_repo</code></p>
+          <h2 class="section-heading" id="9d23" class="mj mk ce bj bi fl ig ml ii mm mn mo mp mq mr ms mt"
+            data-selectable-paragraph="">
+            Installation
+          </h2>
+          <p dir="ltr"><a href="https://www.python.org/downloads/" class="bw cu mb mc md me" target="_blank"
+              rel="noopener nofollow">Python 3.6+</a> should be installed in your device.</p>
+          <p dir="ltr">Navigate into your forked directory (the folder you have downloaded).</p>
+          <p dir="ltr">You can install the required packages for your project in your environment by
+            running the following command in the terminal.</p>
+          <p dir="ltr"><code class="lq mf mg mh mi b">pip install -r requirements.txt</code></p>
+          <h2 class="section-heading" id="210a" class="mj mk ce bj bi fl ig ml ii mm mn mo mp mq mr ms mt"
+            data-selectable-paragraph="">Running
+            the
+            file</h2>
+          <p dir="ltr">In the project folder run the following command.</p>
+          <p dir="ltr"><code class="lq mf mg mh mi b">python virtual_drums.py</code></p>
+          <p dir="ltr">You will see the output of the webcam on your screen with the drums added. You
+            can
+            use a green stick to hit the drums(a pen or pencil would be great).</p>
+          <p dir="ltr">Green sticks are needed because we have used a detection window that would
+            detect
+            the color green.</p>
+          <p dir="ltr">Under the hood when a green object is detected by the window(the part of the
+            image
+            with the drums) it would interpret it as the drum being hit and plays the beat.</p>
+          <p dir="ltr">We will now take a look at the code that does this.</p>
+          <h2 class="section-heading" id="6bda" class="mj mk ce bj bi fl ig ml ii mm mn mo mp mq mr ms mt"
+            data-selectable-paragraph="">The code
+          </h2>
+          <p dir="ltr">Open the <code class="lq mf mg mh mi b">virtual_drums.py</code> file in your
+            preferred text editor.</p>
+          <p dir="ltr">You can follow along and build your own file or edit the file that you have
+            downloaded. We will now take a look at how all this works!</p>
+          <p dir="ltr">We begin by importing the necessary libraries. You need to have these installed
+            in
+            your environment if not run <code class="lq mf mg mh mi b">pip install -r requirements.txt</code></p>
+          <pre
+            class="ld le lf lg lh mz na dk"><span id="1d75" class="nb mk ce bj mi b ga nc nd r fv" data-selectable-paragraph=""># Importing the necessary libraries<br>import numpy as np<br>import time<br>import cv2<br>from pygame import mixer</span></pre>
+          <p dir="ltr">Next we define a function to play the drum beat when a green object is detected
+            on
+            the window.</p>
+          <p dir="ltr">We play the sound if the detected color lies between our set limits.</p>
+          <pre
+            class="ld le lf lg lh mz na dk"><span id="4492" class="nb mk ce bj mi b ga nc nd r fv" data-selectable-paragraph=""># This function plays the corresponding drum beat if a green color object is detected in the region<br>def play_beat(detected,sound):</span><span id="499a" class="nb mk ce bj mi b ga ne nf ng nh ni nd r fv" data-selectable-paragraph=""></br># Checks if the detected green color is greater that a preset value <br> play = (detected) &gt; hat_thickness[0]*hat_thickness[1]*0.8</span><span id="2a4d" class="nb mk ce bj mi b ga ne nf ng nh ni nd r fv" data-selectable-paragraph=""></br># If it is detected play the corresponding drum beat<br> if play and sound==1:<br> drum_snare.play()<br> <br> elif play and sound==2:<br> drum_hat.play()<br> time.sleep(0.001)</span></pre>
+          <p dir="ltr">Next we define a function to detect green color if it is present in our window.
+          </p>
+          <pre
+            class="ld le lf lg lh mz na dk"><span id="d600" class="nb mk ce bj mi b ga nc nd r fv" data-selectable-paragraph=""># This function is used to check if green color is present in the small region<br>def detect_in_region(frame,sound):<br>	<br>	# Converting to HSV<br>	hsv = cv2.cvtColor(frame, cv2.COLOR_BGR2HSV)<br><br>	# Creating mask<br>	mask = cv2.inRange(hsv, greenLower, greenUpper)<br>	<br>	# Calculating the number of green pixels<br>	detected = np.sum(mask)<br>	<br>	# Call the function to play the drum beat<br>	play_beat(detected,sound)<br><br>	return mask</span></pre>
+          <p dir="ltr">Next we import our drum beats and store it.</p>
+          <p id="d32d" class="kn kz ce bj kp b ix kq la iz kr lb ks kt jk ku kv jl kw kx jm ky hx"
+            data-selectable-paragraph="">We then set the upper and lower limits for the green color that should be
+            detected.
+            You could change this to the limits of the color that you desire.</p>
+          <p id="1023" class="kn kz ce bj kp b ix kq la iz kr lb ks kt jk ku kv jl kw kx jm ky hx"
+            data-selectable-paragraph="">We then start the webcam and read the input from it.</p>
+          <pre
+            class="ld le lf lg lh mz na dk"><span id="ed0d" class="nb mk ce bj mi b ga nc nd r fv" data-selectable-paragraph=""># A flag variable to choose whether to show the region that is being detected<br>verbose = False<br><br># Importing drum beats<br>mixer.init()<br>drum_hat = mixer.Sound('./sounds/high_hat_1.ogg')<br>drum_snare = mixer.Sound('./sounds/snare_1.wav')<br><br><br># Set HSV range for detecting green color <br>greenLower = (25,52,72)<br>greenUpper = (102,255,255)<br><br># Obtain input from the webcam <br>camera = cv2.VideoCapture(0)<br>ret,frame = camera.read()<br>H,W = frame.shape[:2]<br><br>kernel = np.ones((7,7),np.uint8)</span></pre>
+          <p id="e7d7" class="kn kz ce bj kp b ix kq la iz kr lb ks kt jk ku kv jl kw kx jm ky hx"
+            data-selectable-paragraph="">We will import the images of the drums to be added to the video output. In this
+            example I have downloaded and added a high hat and a snare drum.</p>
+          <pre
+            class="ld le lf lg lh mz na dk"><span id="a5f2" class="nb mk ce bj mi b ga nc nd r fv" data-selectable-paragraph=""># Read the image of High Hat and the Snare drum</span><span id="8929" class="nb mk ce bj mi b ga ne nf ng nh ni nd r fv" data-selectable-paragraph=""></br>hat = cv2.resize(cv2.imread('./images/high_hat.png'),(200,100),interpolation=cv2.INTER_CUBIC)</span><span id="48e5" class="nb mk ce bj mi b ga ne nf ng nh ni nd r fv" data-selectable-paragraph="">snare = cv2.resize(cv2.imread('./images/snare_drum.png'),(200,100),interpolation=cv2.INTER_CUBIC)</span></pre>
+          <p id="02cf" class="kn kz ce bj kp b ix kq la iz kr lb ks kt jk ku kv jl kw kx jm ky hx"
+            data-selectable-paragraph="">We will now set the region or the window in which we should detect the green
+            color.
+            In this example we have two drums so we create two windows.</p>
+          <pre
+            class="ld le lf lg lh mz na dk"><span id="6e36" class="nb mk ce bj mi b ga nc nd r fv" data-selectable-paragraph=""># Set the region area for detecting green color <br>hat_center = [np.shape(frame)[1]*2//8,np.shape(frame)[0]*6//8]<br>snare_center = [np.shape(frame)[1]*6//8,np.shape(frame)[0]*6//8]<br><br>hat_thickness = [200,100]<br>hat_top = [hat_center[0]-hat_thickness[0]//2,hat_center[1]-hat_thickness[1]//2]<br>hat_btm = [hat_center[0]+hat_thickness[0]//2,hat_center[1]+hat_thickness[1]//2]<br><br>snare_thickness = [200,100]<br>snare_top = [snare_center[0]-snare_thickness[0]//2,snare_center[1]-snare_thickness[1]//2]<br>snare_btm = [snare_center[0]+snare_thickness[0]//2,snare_center[1]+snare_thickness[1]//2]<br><br>time.sleep(1)</span></pre>
+          <p id="234b" class="kn kz ce bj kp b ix kq la iz kr lb ks kt jk ku kv jl kw kx jm ky hx"
+            data-selectable-paragraph="">We then run an infinite loop that breaks when we press “Q” on the keyboard.</p>
+          <p id="209f" class="kn kz ce bj kp b ix kq la iz kr lb ks kt jk ku kv jl kw kx jm ky hx"
+            data-selectable-paragraph="">We call the function to display the drums on the screen and call the function
+            to
+            detect if a green object hits the window.</p>
+          <p id="0116" class="kn kz ce bj kp b ix kq la iz kr lb ks kt jk ku kv jl kw kx jm ky hx"
+            data-selectable-paragraph="">Finally we have to clean up the open window after it is quit by pressing “Q”.
+          </p>
+          <pre
+            class="ld le lf lg lh mz na dk"><span id="88eb" class="nb mk ce bj mi b ga nc nd r fv" data-selectable-paragraph="">while True:<br>	<br>	# Select the current frame<br>	ret, frame = camera.read()<br>	frame = cv2.flip(frame,1)<br><br>	if not(ret):<br>	    break<br>    <br>	# Select region corresponding to the Snare drum<br>	snare_region = np.copy(frame[snare_top[1]:snare_btm[1],snare_top[0]:snare_btm[0]])<br>	mask = detect_in_region(snare_region,1)<br><br>	# Select region corresponding to the High Hat<br>	hat_region = np.copy(frame[hat_top[1]:hat_btm[1],hat_top[0]:hat_btm[0]])<br>	mask = detect_in_region(hat_region,2)<br><br>	# Output project title<br>	cv2.putText(frame,'Virtual Drums',(10,30),2,1,(20,20,20),2)<br>    <br>	# If flag is selected, display the region under detection<br>	if verbose:<br>		frame[snare_top[1]:snare_btm[1],snare_top[0]:snare_btm[0]] = cv2.bitwise_and(frame[snare_top[1]:snare_btm[1],snare_top[0]:snare_btm[0]],frame[snare_top[1]:snare_btm[1],snare_top[0]:snare_btm[0]], mask=mask[snare_top[1]:snare_btm[1],snare_top[0]:snare_btm[0]])<br>		frame[hat_top[1]:hat_btm[1],hat_top[0]:hat_btm[0]] = cv2.bitwise_and(frame[hat_top[1]:hat_btm[1],hat_top[0]:hat_btm[0]],frame[hat_top[1]:hat_btm[1],hat_top[0]:hat_btm[0]],mask=mask[hat_top[1]:hat_btm[1],hat_top[0]:hat_btm[0]])<br>    <br>	# If flag is not selected, display the drums<br>	else:<br>		frame[snare_top[1]:snare_btm[1],snare_top[0]:snare_btm[0]] = cv2.addWeighted(snare, 1, frame[snare_top[1]:snare_btm[1],snare_top[0]:snare_btm[0]], 1, 0)<br>		frame[hat_top[1]:hat_btm[1],hat_top[0]:hat_btm[0]] = cv2.addWeighted(hat, 1, frame[hat_top[1]:hat_btm[1],hat_top[0]:hat_btm[0]], 1, 0)<br>    <br>    <br>	cv2.imshow('Output',frame)<br>	key = cv2.waitKey(1) &amp; 0xFF<br>	# 'Q' to exit<br>	if key == ord("q"):<br>		break</span><span id="f9e9" class="nb mk ce bj mi b ga ne nf ng nh ni nd r fv" data-selectable-paragraph=""># Clean up the open windows<br>camera.release()<br>cv2.destroyAllWindows()</span></pre>
+          <p id="89c6" class="kn kz ce bj kp b ix kq la iz kr lb ks kt jk ku kv jl kw kx jm ky hx"
+            data-selectable-paragraph="">That is it! Now you can jam using your virtual-drum set. Try changing the drums
+            or
+            add more to the project.</p>
+          <p id="c43c" class="kn kz ce bj kp b ix kq la iz kr lb ks kt jk ku kv jl kw kx jm ky hx"
+            data-selectable-paragraph="">You can use this knowledge to build your own computer vision applications using
+            OpenCV.</p>
+          <p id="1ce4" class="kn kz ce bj kp b ix kq la iz kr lb ks kt jk ku kv jl kw kx jm ky hx"
+            data-selectable-paragraph="">Happy Coding!</p>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <hr>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <ul class="list-inline text-center">
+            <li class="list-inline-item">
+              <a target="_blank" href="https://www.linkedin.com/in/navendup/">
+                <span class="fa-stack fa-lg">
+                  <i class="fas fa-circle fa-stack-2x"></i>
+                  <i class="fab fa-linkedin fa-stack-1x fa-inverse"></i>
+                </span>
+              </a>
+            </li>
+            <li class="list-inline-item">
+              <a target="_blank" href="https://medium.com/@navendupottekkat">
+                <span class="fa-stack fa-lg">
+                  <i class="fas fa-circle fa-stack-2x"></i>
+                  <i class="fab fa-medium fa-stack-1x fa-inverse"></i>
+                </span>
+              </a>
+            </li>
+            <li class="list-inline-item">
+              <a target="blank" href="https://github.com/navendu-pottekkat/ds-bootcamp">
+                <span class="fa-stack fa-lg">
+                  <i class="fas fa-circle fa-stack-2x"></i>
+                  <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+                </span>
+              </a>
+            </li>
+            <li class="list-inline-item">
+              <a target="blank"
+                href="https://join.slack.com/t/datasciencebo-aox8972/shared_invite/zt-ekk0kdt0-T4C5Evcqb8ixyuGnJJyXpw">
+                <span class="fa-stack fa-lg">
+                  <i class="fas fa-circle fa-stack-2x"></i>
+                  <i class="fab fa-slack fa-stack-1x fa-inverse"></i>
+                </span>
+              </a>
+            </li>
+          </ul>
+          <p class="copyright text-muted">Copyright &copy; Data Science Bootcamp 2020</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Custom scripts for this template -->
+  <script src="js/clean-blog.min.js"></script>
+
+  <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js?skin=sunburst"></script>
+
+</body>
+
+</html>
