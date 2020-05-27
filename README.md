@@ -1,5 +1,9 @@
 # Data Science Bootcamp
 
+[![HitCount](http://hits.dwyl.com/navendu-pottekkat/ds-bootcamp.svg)](http://hits.dwyl.com/navendu-pottekkat/ds-bootcamp)
+[![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/navendu-pottekkat/ds-bootcamp/issues)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
 Your all in one platform for getting started with Data Science and Machine Learning.
 
 ## About
